@@ -14,7 +14,12 @@
   <label for="email">Email ID:</label><br>
   <input type="text" id="email" name="email" value=""><br><br>
   <input type="submit" value="Subscribe">
+  
 </form> 
-
+<div>
+    {% if data is not none %}
+    <p>{{data}}</p>
+    {% endif %}
+</div>
     </body>
 </html>
