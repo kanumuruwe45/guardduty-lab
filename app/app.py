@@ -12,10 +12,11 @@ def get_cmd():
     if request.method == "POST":
         if request.form.get("email"):
             url = request.form.get("email")
-#             temp =  str(subprocess.call(["curl",url]))+ " has succesfully subscribed to AppSecEngineer"
-            process = subprocess.Popen(['curl', url], stdout=subprocess.PIPE)
-            print(process)
-        return render_template("email.html",data=process)
+            temp =  str(subprocess.check_output(["curl",url]))+ " has succesfully subscribed to AppSecEngineer"
+            print(temp)
+            # temp="Rajesh"
+        return render_template("email.html",data=temp)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=3000)
+
