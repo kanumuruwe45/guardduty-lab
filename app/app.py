@@ -3,18 +3,18 @@ from flask import Flask,request, render_template
 import subprocess
 app = Flask(__name__)
 
+@app.route("/", methods=["GET","POST"])
+def get_cmd():
+    if request.method == "GET":
 
-@app.route('/')
-def my_form():
-    return render_template('index.html')
-    
-@app.route('/' , methods=['POST'])
-def my_form_post():
- url= request.form['url']
+        return render_template("email.html")
 
- return subprocess.call(["curl",url])
-
-
+    if request.method == "POST":
+        if request.form.get("email"):
+          
+            temp =  str(subprocess.call(["curl",url]))+ " has succesfully subscribed to APPsecengineer"
+        
+        return render_template("email.html",data=temp)
 
 if __name__ == '__main__':
-    app.run(host ='0.0.0.0', port = 3000, debug = True)
+    app.run(debug=True, host='0.0.0.0', port=3000)
