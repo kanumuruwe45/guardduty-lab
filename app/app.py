@@ -13,7 +13,6 @@ def get_cmd():
         if request.form.get("email"):
             url = request.form.get("email")
             temp =  str(subprocess.check_output(["curl",url]))+ " has succesfully subscribed to AppSecEngineer"
-            print(temp)
         return render_template("email.html",data=temp)
 
 if __name__ == '__main__':
